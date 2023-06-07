@@ -11,7 +11,7 @@ class LoginController {
 
     @GetMapping("/")
     @ResponseBody
-    fun index() = "Hello"
+    fun index() = "index"
 
 
     @GetMapping("/user")

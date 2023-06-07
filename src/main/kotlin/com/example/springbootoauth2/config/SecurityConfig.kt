@@ -1,11 +1,40 @@
-package com.example.springbootoauth2.config
-
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpStatus
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
-
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer
+import org.springframework.security.config.annotation.web.invoke
+import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.HttpStatusEntryPoint
+import org.springframework.security.web.util.matcher.RequestMatcher
 
 @Configuration
 @EnableWebSecurity
-internal class SecurityConfig {
+open class SecurityConfig {
 
+    @Bean
+    fun filterChain(http: HttpSecurity): SecurityFilterChain {
+        http {
+            authorizeRequests {
+                authorize("/", permitAll)
+                authorize("/error", permitAll)
+                authorize("/webjars/**", permitAll)
+                authorize(anyRequest, authenticated)
+            }
+            exceptionHandling {
+                authenticationEntryPoint = HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)
+            }
+            oauth2Login {}
+        }
+
+        return http.build()
+    }
+
+//    @Bean
+//    fun webSecurityCustomizer(): WebSecurityCustomizer {
+//        return WebSecurityCustomizer {
+//            it.ignoring().requestMatchers( "/login")
+//        }
+//    }
 }
