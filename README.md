@@ -2,6 +2,7 @@
 
 https://spring.io/guides/tutorials/spring-boot-oauth2/
 https://docs.spring.io/spring-security/reference/servlet/configuration/kotlin.html
+https://catsbi.oopy.io/c0a4f395-24b2-44e5-8eeb-275d19e2a536
 
 
 ## WebSecurity

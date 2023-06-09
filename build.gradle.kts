@@ -39,6 +39,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
     implementation("org.springframework.boot:spring-boot-devtools:3.1.0")
 
+    // https://mvnrepository.com/artifact/org.webjars.bower/js-cookie
+    implementation("org.webjars.bower:js-cookie:2.2.0")
+
 }
 
 tasks.withType<KotlinCompile> {
